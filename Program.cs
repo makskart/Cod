@@ -23,27 +23,38 @@ namespace ConsoleApplication1
                 {
                     case 1:
                         {
-                            Console.WriteLine("Add the new element of array: ");
+                            for (int k = 0; k < 15; k++)
+                                Console.WriteLine("{0}: {1}", k, arr[k]);
+                            Console.WriteLine("");
+                            Console.WriteLine("Добавить элемент к массиву: ");
+                            int newNumb = Convert.ToInt32(Console.ReadLine());
                             int kk = arr.Length;
                             int[] arr2 = new int[++kk];
-                            for (int k = 0; k < 5; k++)
+                            for (int k = 0; k < 15; k++)
                                 arr2[k] = arr[k];
-                            arr2[--kk] = rand.Next(20);
-                            Console.WriteLine("Added new number: " + arr2[kk]);
+                            arr2[--kk] = newNumb;
+                            Console.WriteLine("Элемент {0} добавлен к массиву: ", arr2[kk]);
+                            for (int k = 0; k < 16; k++)
+                                Console.WriteLine("{0}: {1}", k, arr2[k]);
                         }
                         break;
                     case 2:
                         {
-                            Console.Write("What element of array need to delete? Write index [0-4]: ");
-                            var indArr = Console.ReadLine();
-                            int[] arr2 = new int[4];
+                            Console.Write("Укажите номер индекса элемента массива, который нужно удалить[0-14]: ");
+                            var indArr = Convert.ToInt32(Console.ReadLine());
+                            if (indArr > 14 || indArr < 1)
+                            {
+                                Console.WriteLine("Ошибка, необходимо ввести индекс в диапазоне [0-14]");
+                                break;
+                            }
+                            int[] arr2 = new int[14];
                             int temp = 0;
                             int delInd = 0;
-                            for (int k = 0; k < 5; k++)
+                            for (int k = 0; k < 15; k++)
                             {
 
                                 Console.WriteLine("{0}: {1}", k, arr[k]);
-                                if (k == Convert.ToInt32(indArr))
+                                if (k == indArr)
                                 {
                                     delInd = arr[k];
                                     continue;
@@ -51,15 +62,17 @@ namespace ConsoleApplication1
                                 arr2[temp] = arr[k];
                                 temp++;
                             }
-                            for (int k = 0; k < 4; k++)
+                            Console.WriteLine("");
+                            for (int k = 0; k < 14; k++)
                                 Console.WriteLine("{0}: {1}", k, arr2[k]);
-                            Console.WriteLine(" Deleted number: " + delInd);
+                            Console.WriteLine("Удалён элемент с индексом: " + delInd);
                         }
                         break;
                     case 3:
                         {
-                            for (int k = 0; k < 5; k++)
-                                Console.WriteLine("{0}: {1}", k, arr[k]);
+                            Console.WriteLine("  Вывод исходного массива:");
+                            for (int k = 0; k < 15; k++)
+                                Console.Write("  " + arr[k]);
                         }
                         break;
 
@@ -73,7 +86,7 @@ namespace ConsoleApplication1
                             for (int k = 0; k < 15; k++)
                             {
                                 if (k % 2 == 0 && k != 0)
-                                arr2[a2s++] = arr[k];                                  
+                                    arr2[a2s++] = arr[k];
                             }
                             Array.Sort(arr2);
                             for (int k = 0; k < 15; k++)
@@ -85,50 +98,17 @@ namespace ConsoleApplication1
                                 }
                             }
                             for (int k = 0; k < 15; k++)
-                                Console.WriteLine("{0}: {1}", k, arr[k]); 
-
-
-                            /*for (int sk = 0; sk < 15; sk++)
-                            {
-                                for (int k = 0; k < 15; k++)
-                                    if (k % 2 == 0 && k != 0)
-                                        if (temp < arr[k] && arr[k] < tempt)
-                                        {
-                                            temp = arr[k];
-                                            arr2[a2s++] = temp;
-                                        }
-                                //if (sk % 2 == 0 && sk != 0)
-                                     
-                                tempt = temp;
-                                temp = 0;
-                            }
-                            foreach(int k in arr2)
-                            {
-                                arr[k+2] = arr2[k];
-                            }
-                            for (int k = 0; k < 7; k++)
-                                Console.WriteLine("{0}: {1}", k, arr2[k]);*/
+                                Console.WriteLine("{0}: {1}", k, arr[k]);
                         }
                         break;
                     default:
-                        Console.WriteLine("Error. Write number [1-4]");
+                        Console.WriteLine("Ошибка! Необходимо ввести число в диапазоне [1-4].");
                         break;
                 }
                 w++;
-                //Console.ReadLine();
-                // test 2
             }
             while (w < 10);
         }
-        /*
-private static void Show()
-{
-   int[] arr;
-   for (int k = 0; k < 10; k++)
-   {
-       Console.WriteLine("{0}: {1}", k, arr[k]);
-   }
-}
-*/
     }
 }
+// test git push
