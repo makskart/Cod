@@ -9,10 +9,11 @@ namespace ConsoleApplication1
     class Program
     {
         static int arrSize = 15;
+        static int arrCitySize = 6;
         static void Main(string[] args)
         {
             int[] arr = new int[arrSize];
-            Console.WriteLine("1. Добавить элемент\n2. Удалить\n3. Вывести\n4. Задание по варианту\n");
+            Console.WriteLine("1. Добавить элемент\n2. Удалить\n3. Вывести\n4. Задание по варианту\n5. Удалить 1-й чётный элемент");
             Random rand = new Random();
             int w = 0;
             do
@@ -107,6 +108,29 @@ namespace ConsoleApplication1
                                 Console.WriteLine("{0}: {1}", k, arr[k]);
                         }
                         break;
+                    case 5:
+                        {
+                            string[] arrayCity = new string[6] { "Perm", "Kazan", "Moscow", "Sochi", "Volgograd", "Tagil" };
+                            for (int l = 0; l < arrCitySize; l++)
+                            {
+                                if (l % 2 == 0 && l != 0)
+                                {
+                                    Console.WriteLine("Удалить \"{0}\"", arrayCity[l]);
+                                    do
+                                    {
+                                        arrayCity[l] = arrayCity[l];
+                                        l++;
+                                    }
+                                    while (l < arrCitySize);
+                                    Array.Resize(ref arrayCity, arrCitySize - 1);
+                                    break;
+                                }
+                            }
+                            for (int l = 0; l < arrCitySize - 1; l++)
+                                Console.WriteLine("  {0}", arrayCity[l]);
+                            Console.WriteLine("Массив \"arrayCity\" преобразован из {0} в {1} строчный.", arrCitySize, arrayCity.Length);
+                        }
+                        break;
                     default:
                         Console.WriteLine("Ошибка! Необходимо ввести число в диапазоне [1-4].");
                         break;
@@ -115,6 +139,7 @@ namespace ConsoleApplication1
             }
             while (w < 10);
         }
+
     }
     /*
     class ShowArray
