@@ -8,29 +8,31 @@ namespace ConsoleApplication1
 {
     class Program
     {
+        static int arrSize = 15;
         static void Main(string[] args)
         {
-            int[] arr = new int[15];
+            int[] arr = new int[arrSize];
             Console.WriteLine("1. Добавить элемент\n2. Удалить\n3. Вывести\n4. Задание по варианту\n");
             Random rand = new Random();
             int w = 0;
             do
             {
                 int action = Convert.ToInt32(Console.ReadLine());
-                for (int k = 0; k < 15; k++)
+                for (int k = 0; k < arrSize; k++)
                     arr[k] = rand.Next(20);
                 switch (action)
                 {
                     case 1:
                         {
-                            for (int k = 0; k < 15; k++)
+                            // AddElement()
+                            for (int k = 0; k < arrSize; k++) // ShowArr();
                                 Console.WriteLine("{0}: {1}", k, arr[k]);
                             Console.WriteLine("");
                             Console.WriteLine("Добавить элемент к массиву: ");
                             int newNumb = Convert.ToInt32(Console.ReadLine());
                             int kk = arr.Length;
                             int[] arr2 = new int[++kk];
-                            for (int k = 0; k < 15; k++)
+                            for (int k = 0; k < arrSize; k++)
                                 arr2[k] = arr[k];
                             arr2[--kk] = newNumb;
                             Console.WriteLine("Элемент {0} добавлен к массиву: ", arr2[kk]);
@@ -40,6 +42,7 @@ namespace ConsoleApplication1
                         break;
                     case 2:
                         {
+                            // DeleteElement();
                             Console.Write("Укажите номер индекса элемента массива, который нужно удалить[0-14]: ");
                             var indArr = Convert.ToInt32(Console.ReadLine());
                             if (indArr > 14 || indArr < 1)
@@ -50,7 +53,7 @@ namespace ConsoleApplication1
                             int[] arr2 = new int[14];
                             int temp = 0;
                             int delInd = 0;
-                            for (int k = 0; k < 15; k++)
+                            for (int k = 0; k < arrSize; k++)
                             {
 
                                 Console.WriteLine("{0}: {1}", k, arr[k]);
@@ -70,26 +73,28 @@ namespace ConsoleApplication1
                         break;
                     case 3:
                         {
+                            // ShowArr()
                             Console.WriteLine("  Вывод исходного массива:");
-                            for (int k = 0; k < 15; k++)
+                            for (int k = 0; k < arrSize; k++)
                                 Console.Write("  " + arr[k]);
                         }
                         break;
 
                     case 4:
                         {
-                            for (int k = 0; k < 15; k++)
+                            // Task();
+                            for (int k = 0; k < arrSize; k++)
                                 Console.WriteLine("{0}: {1}", k, arr[k]);
                             Console.WriteLine("");
                             int arr2size = arr.Length / 2, a2s = 0;
                             int[] arr2 = new int[arr2size];
-                            for (int k = 0; k < 15; k++)
+                            for (int k = 0; k < arrSize; k++)
                             {
                                 if (k % 2 == 0 && k != 0)
                                     arr2[a2s++] = arr[k];
                             }
                             Array.Sort(arr2);
-                            for (int k = 0; k < 15; k++)
+                            for (int k = 0; k < arrSize; k++)
                             {
                                 if (k % 2 == 0 && k != 0)
                                 {
@@ -97,7 +102,8 @@ namespace ConsoleApplication1
                                     arr[k] = arr2[arr2size];
                                 }
                             }
-                            for (int k = 0; k < 15; k++)
+                            Console.WriteLine("Отсортировано:");
+                            for (int k = 0; k < arrSize; k++)
                                 Console.WriteLine("{0}: {1}", k, arr[k]);
                         }
                         break;
@@ -110,5 +116,13 @@ namespace ConsoleApplication1
             while (w < 10);
         }
     }
+    /*
+    class ShowArray
+    {
+        public void ArrShow()
+        {
+            for (int k = 0; k< 15; k++)
+                Console.Write(" " + );
+        }
+    }*/
 }
-// test git push
